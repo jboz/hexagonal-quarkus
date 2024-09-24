@@ -2,6 +2,10 @@
 
 Implementation of the hexagonal architecture with quarkus.
 
+## Start
+
+TODO start local dev with wiremock
+
 ## Stack
 
 - java
