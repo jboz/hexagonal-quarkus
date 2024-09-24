@@ -1,0 +1,14 @@
+@API=http://localhost:8080/api
+
+###
+GET {{API}}/orders
+
+###
+POST {{API}}/orders
+Content-Type: application/json
+Accept: application/json
+
+{
+    "productId": "chaussettes",
+    "quantity": 10
+}

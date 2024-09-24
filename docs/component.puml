@@ -1,0 +1,29 @@
+@startuml comps
+
+title Components diagram
+
+actor User
+
+skinparam component {
+    backgroundColor<<black box>> #414559
+    fontColor<<black box>> #fff
+}
+
+package "Orders System" {
+    () "HTTP Api" as orderApi
+    [Order Component] as order
+    database Orders as orderDb
+}
+() "HTTP Api" as stockApi
+
+[Stock Component]<<black box>> as stock
+
+User -> orderApi
+
+orderApi - order
+stockApi - stock
+
+order ..> stockApi
+order -> orderDb
+
+@enduml

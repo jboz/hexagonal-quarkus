@@ -1,0 +1,12 @@
+{
+  "request": {
+    "url": "/product-store/api/availability?productId=chaussettes&quantity=5",
+    "method": "GET"
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
