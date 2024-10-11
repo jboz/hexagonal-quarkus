@@ -2,6 +2,7 @@ package ch.ifocusit.order.boundary;
 
 import static io.restassured.RestAssured.*;
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.Test;
 import ch.ifocusit.order.model.Order;
@@ -40,6 +41,6 @@ public class OrderResourcesTest {
     @Produces
     @ApplicationScoped
     public OrderService orderService() {
-        return new OrderService(null, null);
+        return mock(OrderService.class);
     }
 }
