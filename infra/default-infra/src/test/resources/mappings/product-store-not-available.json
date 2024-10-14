@@ -1,0 +1,18 @@
+{
+  "request": {
+    "url": "/product-store/api/available?productId=bottes&quantity=10",
+    "method": "GET"
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "type": "https://ifocusit.ch/problems/out-of-stock",
+      "title": "Out of Stock",
+      "status": 400,
+      "detail": "Product 'bottes' is no longer available"
+    }
+  }
+}

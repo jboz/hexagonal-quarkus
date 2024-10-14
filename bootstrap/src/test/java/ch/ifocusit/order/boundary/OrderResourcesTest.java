@@ -5,11 +5,11 @@ import static io.restassured.RestAssured.*;
 import static org.assertj.core.api.Assertions.*;
 import java.time.Duration;
 import org.junit.jupiter.api.Test;
-import ch.ifocusit.order.entity.OrderEntity;
+import ch.ifocusit.order.infra.entity.OrderEntity;
 import ch.ifocusit.order.model.Order;
 import ch.ifocusit.order.model.OrderStatus;
 import ch.ifocusit.quarkus.wiremock.WiremockTestResource;
-import io.quarkus.test.common.QuarkusTestResource;
+import io.quarkiverse.wiremock.devservice.ConnectWireMock;
 import io.quarkus.test.junit.DisabledOnIntegrationTest;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.vertx.RunOnVertxContext;
@@ -17,7 +17,7 @@ import io.quarkus.test.vertx.UniAsserter;
 import jakarta.ws.rs.core.MediaType;
 
 @QuarkusTest
-@QuarkusTestResource(WiremockTestResource.class)
+@ConnectWireMock
 public class OrderResourcesTest {
 
         @Test
@@ -58,9 +58,8 @@ public class OrderResourcesTest {
                 assertThat(created.getStatus()).isEqualTo(OrderStatus.NEW);
                 assertThat(created.getProductId()).isEqualTo("chaussettes");
 
-                WiremockTestResource.wireMockServer.verify(1,
-                                anyRequestedFor(urlEqualTo(
-                                                "/product-store/api/availability?productId=chaussettes&quantity=5")));
+                WiremockTestResource.wireMockServer
+                                .verify(1, anyRequestedFor(urlEqualTo("/product-store/api/available?productId=chaussettes&quantity=5")));
         }
 
         @Test

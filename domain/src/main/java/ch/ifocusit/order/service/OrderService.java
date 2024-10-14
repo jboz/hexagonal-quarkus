@@ -15,7 +15,7 @@ public class OrderService {
     private final ProductStore productStore;
 
     public Uni<Order> execute(NewOrderEvent event) {
-        return productStore.isAvailable(event.getProductId(), event.getQuantity())
+        return productStore.ifAvailable(event.getProductId(), event.getQuantity())
                 .map((a) -> Order.builder()
                         .productId(event.getProductId())
                         .quantity(event.getQuantity())

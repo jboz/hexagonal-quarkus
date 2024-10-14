@@ -54,7 +54,7 @@ public class OrderServiceTest {
     @DisplayName("create a new order in database")
     void executeNewOrder() {
         // given
-        when(productStore.isAvailable("chaussettes", 100))
+        when(productStore.ifAvailable("chaussettes", 100))
                 .thenReturn(Uni.createFrom().voidItem());
 
         when(repository.persist(any())).thenAnswer((invocation) -> {

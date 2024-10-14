@@ -13,7 +13,8 @@ TODO start local dev with wiremock
 - TODO kotlin
 - reactive extensions
 - open api
-- TODO kafka
+- kafka
+- TODO avro
 - rest client
 - hibernate
 - monogodb

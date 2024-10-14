@@ -6,17 +6,11 @@
 
     <parent>
         <groupId>ch.ifocusit.order</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>infra</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>infra</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>default-infra</module>
-        <module>delivery-producer</module>
-    </modules>
+    <artifactId>delivery-producer</artifactId>
 
     <dependencies>
     </dependencies>
