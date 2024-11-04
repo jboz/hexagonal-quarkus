@@ -14,16 +14,16 @@ package "Orders System" {
     [Order Component] as order
     database Orders as orderDb
 }
-() "HTTP Api" as stockApi
+() "HTTP Api" as storeApi
 
-[Stock Component]<<black box>> as stock
+[Product Store Component]<<black box>> as store
 
 User -> orderApi
 
 orderApi - order
-stockApi - stock
+storeApi - store
 
-order ..> stockApi
+order ..> storeApi
 order -> orderDb
 
 @enduml

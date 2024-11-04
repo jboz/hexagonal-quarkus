@@ -1,0 +1,24 @@
+@startuml comps
+
+title Components diagram
+
+queue Kafka
+
+skinparam component {
+    backgroundColor<<black box>> #414559
+    fontColor<<black box>> #fff
+
+    backgroundColor<<existing>> #3B7A57
+    fontColor<<existing>> #fff
+}
+
+package "Orders System" {
+    () "Kafka Handler" as orderApi
+    [Order Component]<<existing>> as order
+}
+
+Kafka -> orderApi
+
+orderApi - order
+
+@enduml

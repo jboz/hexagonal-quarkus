@@ -2,24 +2,26 @@
 
 Implementation of the hexagonal architecture with quarkus.
 
-## Start
-
-TODO start local dev with wiremock
-
 ## Stack
 
-- java
-- quarkus
-- TODO kotlin
-- reactive extensions
-- open api
-- kafka
-- TODO avro
-- rest client
-- hibernate
-- monogodb
-- TODO flyway
-- junit5
-- mockito
-- wiremock
-- BDD with cucumber
+- [x] java
+- [x] quarkus
+- [ ] kotlin
+- [x] reactive extensions
+- [x] rest api with jackson
+- [x] open api
+- [x] kafka with integration test
+- [ ] kafka streams with integration test
+- [ ] avro
+- [x] wiremock
+- [x] rest client
+- [x] hibernate
+- [x] monogodb
+- [ ] postgres with flyway instead of mongodb
+- [x] junit5
+- [x] mockito
+- [x] wiremock
+- [ ] domain features in gherkin
+- [ ] cucumber
+- [ ] living documentation of the domain
+- [ ] living documentation of the infrastructure (modules, API, database and rest client)
