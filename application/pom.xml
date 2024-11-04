@@ -15,6 +15,6 @@
 
     <modules>
         <module>rest</module>
-        <module>kafka-handler</module>
+        <module>kafka-consumer</module>
     </modules>
 </project>

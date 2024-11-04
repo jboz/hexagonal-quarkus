@@ -1,4 +1,4 @@
-# Domain part
+# Domain
 
 DDD and agnostic module, so not external framework (no quarkus deps) and minimal externals librairies.
 Accept are asynchronize support with mutiny and optimize classe implementation with lombok. Maybe late some tools like apache commons.

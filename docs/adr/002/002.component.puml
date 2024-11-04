@@ -13,7 +13,7 @@ skinparam component {
 }
 
 package "Orders System" {
-    () "Kafka Handler" as orderApi
+    () "Kafka Consumer" as orderApi
     [Order Component]<<existing>> as order
 }
 

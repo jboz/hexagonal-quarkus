@@ -20,7 +20,6 @@ import io.smallrye.reactive.messaging.kafka.companion.KafkaCompanion;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
 
-
 @QuarkusTest
 @QuarkusTestResource(KafkaCompanionResource.class)
 public class OrderConsumerTest {

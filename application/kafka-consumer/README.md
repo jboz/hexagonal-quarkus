@@ -1,4 +1,4 @@
-# Application Kafka
+# Application Kafka consumers
 
 Kafka consumers
 
