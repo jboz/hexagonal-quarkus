@@ -1,5 +1,6 @@
 package ch.ifocusit.order.model;
 
+import io.quarkiverse.resteasy.problem.HttpProblem;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -27,7 +28,10 @@ public class Order {
         }
         // create a new order with the difference
         if (newQuantity <= quantity) {
-            throw new IllegalArgumentException("Quantity must be greater than previous one: " + quantity);
+            throw HttpProblem.builder()
+                    .withStatus(422)
+                    .withTitle("Quantity must be greater than previous one: " + quantity)
+                    .build();
         }
         return Order.builder()
                 .productId(productId)
@@ -38,7 +42,10 @@ public class Order {
 
     public Order validate() {
         if (quantity < 1) {
-            throw new IllegalArgumentException("Quantity must be greater than zero");
+            throw HttpProblem.builder()
+                    .withStatus(422)
+                    .withTitle("Quantity must be greater than zero")
+                    .build();
         }
         return this;
     }
