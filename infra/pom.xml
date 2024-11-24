@@ -15,23 +15,6 @@
 
     <modules>
         <module>default-infra</module>
-        <module>delivery-producer</module>
+        <module>kafka-producer</module>
     </modules>
-
-    <dependencies>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

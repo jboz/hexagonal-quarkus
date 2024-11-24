@@ -2,6 +2,12 @@
 
 Implementation of the hexagonal architecture with quarkus.
 
+## Start dev
+
+```shell
+./mvnw clean install
+```
+
 ## Stack
 
 - [x] java
