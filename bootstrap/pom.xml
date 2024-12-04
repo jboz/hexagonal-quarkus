@@ -20,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>ch.ifocusit.order</groupId>
-            <artifactId>kafaucunka-consumer</artifactId>
+            <artifactId>kafka-consumer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

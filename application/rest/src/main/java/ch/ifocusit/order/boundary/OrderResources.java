@@ -6,6 +6,8 @@ import ch.ifocusit.order.service.OrderService;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
@@ -30,13 +32,13 @@ public class OrderResources {
     }
 
     @POST
-    public Uni<Order> execute(NewOrderEvent event) {
+    public Uni<Order> execute(@NotNull @Valid NewOrderEvent event) {
         return orderService.execute(event);
     }
 
     @PATCH
     @Path("/{id}")
-    public Uni<Order> update(@PathParam("id") String id, @QueryParam("quantity") int quantity) {
+    public Uni<Order> update(@PathParam("id") String id, @NotNull @QueryParam("quantity") Integer quantity) {
         return orderService.update(id, quantity);
     }
 }
