@@ -2,6 +2,7 @@ package ch.ifocusit.order.domain.service;
 
 import ch.ifocusit.order.domain.model.Order;
 import ch.ifocusit.order.domain.model.events.NewOrderEvent;
+import ch.ifocusit.order.domain.port.OrderProcessEventPublisher;
 import ch.ifocusit.order.domain.port.OrderRepository;
 import ch.ifocusit.order.domain.port.ProductStore;
 import io.smallrye.mutiny.Multi;
@@ -13,6 +14,7 @@ public class OrderService {
 
     private final OrderRepository repository;
     private final ProductStore productStore;
+    private final OrderProcessEventPublisher eventPublisher;
 
     public Uni<Order> execute(NewOrderEvent event) {
         return productStore.ifAvailable(event.getProductId(), event.getQuantity())
@@ -21,7 +23,8 @@ public class OrderService {
                         .quantity(event.getQuantity())
                         .build()
                         .validate())
-                .chain(repository::persist);
+                .chain(repository::persist)
+                .invoke(eventPublisher::publishOrderExecutedEvent);
     }
 
     public Multi<Order> orders() {
@@ -30,11 +33,8 @@ public class OrderService {
 
     public Uni<Order> update(String id, int quantity) {
         return repository.findById(id)
-                .onItem()
-                .ifNotNull()
-                .transform((order) -> order.update(quantity))
-                .onItem()
-                .ifNotNull()
-                .transformToUni(repository::persist);
+                .onItem().ifNotNull().transform((order) -> order.update(quantity))
+                .onItem().ifNotNull().transformToUni(repository::persist)
+                .invoke(eventPublisher::publishOrderUpdatedEvent);
     }
 }

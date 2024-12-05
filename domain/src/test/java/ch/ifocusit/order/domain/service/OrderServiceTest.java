@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ch.ifocusit.order.domain.model.Order;
 import ch.ifocusit.order.domain.model.OrderStatus;
 import ch.ifocusit.order.domain.model.events.NewOrderEvent;
+import ch.ifocusit.order.domain.port.OrderProcessEventPublisher;
 import ch.ifocusit.order.domain.port.OrderRepository;
 import ch.ifocusit.order.domain.port.ProductStore;
 import io.smallrye.mutiny.Multi;
@@ -28,6 +29,9 @@ public class OrderServiceTest {
 
     @Mock
     ProductStore productStore;
+
+    @Mock
+    OrderProcessEventPublisher eventPublisher;
 
     @InjectMocks
     OrderService service;
@@ -79,6 +83,7 @@ public class OrderServiceTest {
         assertThat(order.getProductId()).isEqualTo("chaussettes");
         assertThat(order.getQuantity()).isEqualTo(100);
         assertThat(order.getStatus()).isEqualTo(OrderStatus.NEW);
+        verify(eventPublisher).publishOrderExecutedEvent(order);
     }
 
     @Test
@@ -119,6 +124,8 @@ public class OrderServiceTest {
         assertThat(updatedOrderCaptor.getValue().getProductId()).isEqualTo("chaussettes");
         assertThat(updatedOrderCaptor.getValue().getQuantity()).isEqualTo(5);
         assertThat(updatedOrderCaptor.getValue().getStatus()).isEqualTo(OrderStatus.NEW);
+
+        verify(eventPublisher).publishOrderUpdatedEvent(order);
     }
 
     @Test
