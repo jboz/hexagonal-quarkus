@@ -14,17 +14,17 @@ import jakarta.inject.Inject;
 public class OrderProcessPublisher implements OrderProcessEventPublisher {
 
     @Inject
-    @Channel("orders")
+    @Channel("orders-processed")
     Emitter<Record<String, OrderProcessMessage>> orderEmitter;
 
     @Override
-    public void publishOrderExecutedEvent(Order order) {
+    public void publishExecutedEvent(Order order) {
         send(order, EventType.EXECUTED);
     }
 
     @Override
-    public void publishOrderUpdatedEvent(Order order) {
-        send(order, EventType.UPDATED);
+    public void publishCancelledEvent(Order order) {
+        send(order, EventType.CANCELLED);
     }
 
     private void send(Order order, EventType eventType) {

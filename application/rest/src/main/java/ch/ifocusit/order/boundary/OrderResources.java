@@ -10,12 +10,11 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/orders")
@@ -36,9 +35,9 @@ public class OrderResources {
         return orderService.execute(event);
     }
 
-    @PATCH
-    @Path("/{id}")
-    public Uni<Order> update(@PathParam("id") String id, @NotNull @QueryParam("quantity") Integer quantity) {
-        return orderService.update(id, quantity);
+    @PUT
+    @Path("/{id}/cancellation")
+    public Uni<Order> cancel(@PathParam("id") String id) {
+        return orderService.cancel(id);
     }
 }

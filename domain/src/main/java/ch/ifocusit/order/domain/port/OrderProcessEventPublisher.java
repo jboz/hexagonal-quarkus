@@ -4,7 +4,7 @@ import ch.ifocusit.order.domain.model.Order;
 
 public interface OrderProcessEventPublisher {
 
-    void publishOrderExecutedEvent(Order order);
+    void publishExecutedEvent(Order order);
 
-    void publishOrderUpdatedEvent(Order order);
+    void publishCancelledEvent(Order order);
 }

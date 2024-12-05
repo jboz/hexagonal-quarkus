@@ -1,5 +1,7 @@
 package ch.ifocusit.order.domain.model;
 
+import ch.ifocusit.order.domain.model.exception.NotCancellableException;
+import ch.ifocusit.order.domain.model.exception.NotExecutableException;
 import ch.ifocusit.order.domain.model.exception.QuantityException;
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -18,23 +20,11 @@ public class Order {
     String productId;
     int quantity;
 
-    public Order update(int newQuantity) {
-        if (status == OrderStatus.NEW) {
-            // update existing
-            return toBuilder()
-                    .quantity(newQuantity)
-                    .build()
-                    .validate();
+    public Order cancel() {
+        if (status == OrderStatus.EXECUTED) {
+            throw NotCancellableException.builder().id(id).build();
         }
-        if (newQuantity < quantity) {
-            throw QuantityException.builder().quantity(newQuantity).referenceQuantity(quantity).build();
-        }
-        // create a new order with the difference
-        return Order.builder()
-                .productId(productId)
-                .quantity(newQuantity - quantity)
-                .build()
-                .validate();
+        return toBuilder().status(OrderStatus.CANCELLED).build();
     }
 
     public Order validate() {
@@ -42,5 +32,12 @@ public class Order {
             throw QuantityException.builder().quantity(quantity).referenceQuantity(0).build();
         }
         return this;
+    }
+
+    public Order execute() {
+        if (status != OrderStatus.NEW) {
+            throw NotExecutableException.builder().id(id).build();
+        }
+        return toBuilder().status(OrderStatus.EXECUTED).build();
     }
 }

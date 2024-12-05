@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class QuantityException extends RuntimeException {
-    int quantity;
-    int referenceQuantity;
+public class NotExecutableException extends RuntimeException {
+    String id;
 }

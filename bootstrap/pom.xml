@@ -14,30 +14,26 @@
 
     <dependencies>
         <dependency>
-            <groupId>ch.ifocusit.order</groupId>
+            <groupId>ch.ifocusit.order.application</groupId>
             <artifactId>rest</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ch.ifocusit.order</groupId>
+            <groupId>ch.ifocusit.order.application</groupId>
             <artifactId>kafka-consumer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ch.ifocusit.order</groupId>
+            <groupId>ch.ifocusit.order.infra</groupId>
             <artifactId>default-infra</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>ch.ifocusit.order</groupId>
+            <groupId>ch.ifocusit.order.infra</groupId>
             <artifactId>kafka-producer</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest</artifactId>
-        </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
@@ -55,12 +51,12 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-test-mongodb</artifactId>
+            <artifactId>quarkus-test-hibernate-reactive-panache</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-test-hibernate-reactive-panache</artifactId>
+            <artifactId>quarkus-test-kafka-companion</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -22,19 +22,20 @@ public class OrderService {
                         .productId(event.getProductId())
                         .quantity(event.getQuantity())
                         .build()
-                        .validate())
+                        .validate()
+                        .execute())
                 .chain(repository::persist)
-                .invoke(eventPublisher::publishOrderExecutedEvent);
+                .invoke(eventPublisher::publishExecutedEvent);
     }
 
     public Multi<Order> orders() {
         return repository.all();
     }
 
-    public Uni<Order> update(String id, int quantity) {
+    public Uni<Order> cancel(String id) {
         return repository.findById(id)
-                .onItem().ifNotNull().transform((order) -> order.update(quantity))
+                .onItem().ifNotNull().transform((order) -> order.cancel())
                 .onItem().ifNotNull().transformToUni(repository::persist)
-                .invoke(eventPublisher::publishOrderUpdatedEvent);
+                .invoke(eventPublisher::publishCancelledEvent);
     }
 }

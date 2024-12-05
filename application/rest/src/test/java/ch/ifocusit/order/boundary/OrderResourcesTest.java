@@ -74,23 +74,22 @@ public class OrderResourcesTest {
     }
 
     @Test
-    void update() {
+    void cancel() {
         Order order = Order.builder()
                 .id("123")
                 .productId("chaussette")
                 .quantity(24)
                 .build();
-        when(orderService.update(anyString(), anyInt())).thenReturn(Uni.createFrom().item(order));
+        when(orderService.cancel(anyString())).thenReturn(Uni.createFrom().item(order));
 
         var executed = given()
-                .header("Content-Type", "application/json")
-                .when().patch("123?quantity=24")
+                .when().put("123/cancellation")
                 .then()
                 .statusCode(200)
                 .extract().as(Order.class);
 
         assertThat(executed).isEqualTo(order);
-        verify(orderService).update("123", 24);
+        verify(orderService).cancel("123");
     }
 
     @Produces

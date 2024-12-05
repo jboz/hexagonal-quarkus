@@ -1,23 +1,28 @@
 package ch.ifocusit.order.infra.port.productstore;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static io.quarkus.wiremock.WiremockTestResource.*;
 import org.junit.jupiter.api.Test;
-import io.quarkus.test.common.QuarkusTestResource;
+import com.github.tomakehurst.wiremock.client.WireMock;
+import io.quarkiverse.wiremock.devservice.ConnectWireMock;
 import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.wiremock.WiremockTestResource;
 import io.smallrye.mutiny.helpers.test.UniAssertSubscriber;
 import jakarta.inject.Inject;
 
 @QuarkusTest
-@QuarkusTestResource(WiremockTestResource.class)
+@ConnectWireMock
 public class ProductStoreAdapterTest {
+
+    WireMock wireMock;
 
     @Inject
     private ProductStoreAdapter adapter;
 
     @Test
     void testAvailable() {
+        // given a manual rest call registration
+        // wireMock.register(get(urlEqualTo("/product-store/api/available?productId=chaussettes&quantity=5"))
+        // .willReturn(aResponse().withStatus(201)));
+
         // when
         adapter.ifAvailable("chaussettes", 5)
                 .subscribe().withSubscriber(UniAssertSubscriber.create())
@@ -25,8 +30,8 @@ public class ProductStoreAdapterTest {
                 .awaitItem()
                 .assertCompleted();
 
-        wireMockServer
-                .verify(1, anyRequestedFor(urlEqualTo("/product-store/api/available?productId=chaussettes&quantity=5")));
+        wireMock
+                .verifyThat(1, anyRequestedFor(urlEqualTo("/product-store/api/available?productId=chaussettes&quantity=5")));
     }
 
     @Test
@@ -38,7 +43,7 @@ public class ProductStoreAdapterTest {
                 .awaitFailure()
                 .assertFailed();
 
-        wireMockServer
-                .verify(1, anyRequestedFor(urlEqualTo("/product-store/api/available?productId=bottes&quantity=10")));
+        wireMock
+                .verifyThat(1, anyRequestedFor(urlEqualTo("/product-store/api/available?productId=bottes&quantity=10")));
     }
 }

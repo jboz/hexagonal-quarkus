@@ -52,13 +52,13 @@ public class OrderProcessPublisherTest {
                 .build();
         var start = Instant.now();
 
-        publisher.publishOrderExecutedEvent(order);
+        publisher.publishExecutedEvent(order);
 
         assertPublished(order, EventType.EXECUTED, start);
     }
 
     @Test
-    void updatedEvent() {
+    void cancelledEvent() {
         var order = Order.builder()
                 .id("123")
                 .productId("chaussette")
@@ -67,9 +67,9 @@ public class OrderProcessPublisherTest {
                 .build();
         var start = Instant.now();
 
-        publisher.publishOrderUpdatedEvent(order);
+        publisher.publishCancelledEvent(order);
 
-        assertPublished(order, EventType.UPDATED, start);
+        assertPublished(order, EventType.CANCELLED, start);
     }
 
     void assertPublished(Order order, EventType eventType, Instant start) {
