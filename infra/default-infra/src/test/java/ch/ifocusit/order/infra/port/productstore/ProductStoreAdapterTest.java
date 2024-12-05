@@ -1,11 +1,11 @@
 package ch.ifocusit.order.infra.port.productstore;
 
-import static ch.ifocusit.quarkus.wiremock.WiremockTestResource.*;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static io.quarkus.wiremock.WiremockTestResource.*;
 import org.junit.jupiter.api.Test;
-import ch.ifocusit.quarkus.wiremock.WiremockTestResource;
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.wiremock.WiremockTestResource;
 import io.smallrye.mutiny.helpers.test.UniAssertSubscriber;
 import jakarta.inject.Inject;
 

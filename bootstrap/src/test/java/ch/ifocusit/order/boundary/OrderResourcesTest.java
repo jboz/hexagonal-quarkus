@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 import ch.ifocusit.order.domain.model.Order;
 import ch.ifocusit.order.domain.model.OrderStatus;
 import ch.ifocusit.order.infra.entity.OrderEntity;
-import ch.ifocusit.quarkus.wiremock.WiremockTestResource;
 import io.quarkiverse.wiremock.devservice.ConnectWireMock;
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 import io.quarkus.test.vertx.RunOnVertxContext;
 import io.quarkus.test.vertx.UniAsserter;
+import io.quarkus.wiremock.WiremockTestResource;
 import jakarta.ws.rs.core.MediaType;
 
 @QuarkusIntegrationTest

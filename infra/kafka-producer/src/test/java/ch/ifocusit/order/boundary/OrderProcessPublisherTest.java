@@ -5,6 +5,8 @@ import java.time.Instant;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ch.ifocusit.order.boundary.dto.EventType;
+import ch.ifocusit.order.boundary.dto.OrderProcessMessage;
 import ch.ifocusit.order.domain.model.Order;
 import ch.ifocusit.order.domain.model.OrderStatus;
 import io.quarkus.kafka.client.serialization.ObjectMapperDeserializer;

@@ -1,4 +1,4 @@
-package ch.ifocusit.order.boundary;
+package ch.ifocusit.order.boundary.dto;
 
 import java.time.Instant;
 import ch.ifocusit.order.domain.model.Order;

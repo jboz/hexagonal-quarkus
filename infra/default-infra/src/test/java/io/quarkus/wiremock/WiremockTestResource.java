@@ -1,4 +1,4 @@
-package ch.ifocusit.quarkus.wiremock;
+package io.quarkus.wiremock;
 
 import java.util.Map;
 import com.github.tomakehurst.wiremock.WireMockServer;

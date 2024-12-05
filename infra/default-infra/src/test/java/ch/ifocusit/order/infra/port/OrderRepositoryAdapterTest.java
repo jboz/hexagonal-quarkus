@@ -1,11 +1,10 @@
-package ch.ifocusit.order.port;
+package ch.ifocusit.order.infra.port;
 
 import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import ch.ifocusit.order.domain.model.Order;
 import ch.ifocusit.order.domain.model.OrderStatus;
 import ch.ifocusit.order.infra.entity.OrderEntity;
-import ch.ifocusit.order.infra.port.OrderRepositoryAdapter;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.vertx.RunOnVertxContext;
 import io.quarkus.test.vertx.UniAsserter;

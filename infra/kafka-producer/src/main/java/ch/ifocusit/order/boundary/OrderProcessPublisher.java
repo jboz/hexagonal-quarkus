@@ -2,6 +2,8 @@ package ch.ifocusit.order.boundary;
 
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
+import ch.ifocusit.order.boundary.dto.EventType;
+import ch.ifocusit.order.boundary.dto.OrderProcessMessage;
 import ch.ifocusit.order.domain.model.Order;
 import ch.ifocusit.order.domain.port.OrderProcessEventPublisher;
 import io.smallrye.reactive.messaging.kafka.Record;
