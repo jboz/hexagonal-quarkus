@@ -1,8 +1,8 @@
 package ch.ifocusit.order.boundary;
 
-import ch.ifocusit.order.model.Order;
-import ch.ifocusit.order.model.events.NewOrderEvent;
-import ch.ifocusit.order.service.OrderService;
+import ch.ifocusit.order.domain.model.Order;
+import ch.ifocusit.order.domain.model.events.NewOrderEvent;
+import ch.ifocusit.order.domain.service.OrderService;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;

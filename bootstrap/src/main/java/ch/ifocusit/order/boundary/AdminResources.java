@@ -1,4 +1,4 @@
-package ch.ifocusit.order.admin;
+package ch.ifocusit.order.boundary;
 
 import jakarta.ws.rs.Path;
 

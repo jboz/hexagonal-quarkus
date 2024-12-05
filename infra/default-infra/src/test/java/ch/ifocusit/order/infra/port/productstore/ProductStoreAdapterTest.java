@@ -1,5 +1,6 @@
 package ch.ifocusit.order.infra.port.productstore;
 
+import static ch.ifocusit.quarkus.wiremock.WiremockTestResource.*;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import org.junit.jupiter.api.Test;
 import ch.ifocusit.quarkus.wiremock.WiremockTestResource;
@@ -21,9 +22,10 @@ public class ProductStoreAdapterTest {
         adapter.ifAvailable("chaussettes", 5)
                 .subscribe().withSubscriber(UniAssertSubscriber.create())
                 // then
+                .awaitItem()
                 .assertCompleted();
 
-        WiremockTestResource.wireMockServer
+        wireMockServer
                 .verify(1, anyRequestedFor(urlEqualTo("/product-store/api/available?productId=chaussettes&quantity=5")));
     }
 
@@ -33,9 +35,10 @@ public class ProductStoreAdapterTest {
         adapter.ifAvailable("bottes", 10)
                 .subscribe().withSubscriber(UniAssertSubscriber.create())
                 // then
+                .awaitFailure()
                 .assertFailed();
 
-        WiremockTestResource.wireMockServer
+        wireMockServer
                 .verify(1, anyRequestedFor(urlEqualTo("/product-store/api/available?productId=bottes&quantity=10")));
     }
 }

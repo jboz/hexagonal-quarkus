@@ -1,15 +1,15 @@
 package ch.ifocusit.order.infra.config;
 
 import static io.restassured.RestAssured.*;
-import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import ch.ifocusit.order.model.exception.QuantityException;
+import org.mockito.Mockito;
+import ch.ifocusit.order.domain.model.exception.QuantityException;
+import ch.ifocusit.order.infra.config.helper.GreetingService;
 import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
+import jakarta.ws.rs.ext.ExceptionMapper;
 
 @QuarkusTest
 public class DomainExceptionHandlerTest {
@@ -17,31 +17,17 @@ public class DomainExceptionHandlerTest {
     @InjectMock
     GreetingService service;
 
+    @Inject
+    ExceptionMapper<QuantityException> quantityException;
+
     @Test
     void quantityException() {
-        when(service.sayHello()).thenThrow(new QuantityException(1, 2));
+        assertThat(quantityException).isNotNull();
 
-        given().when().get("/test").then()
+        Mockito.when(service.sayHello()).thenThrow(new QuantityException(1, 2));
+
+        given().when().get("/exception-test").then()
                 .statusCode(422)
-                .statusLine("toto");
-    }
-
-    @ApplicationScoped
-    public static class GreetingService {
-        public String sayHello() {
-            return "Hello World!";
-        }
-    }
-
-    @Path("/test")
-    public static class GreetingResource {
-
-        @Inject
-        GreetingService service;
-
-        @GET
-        public String sayHello() {
-            return service.sayHello();
-        }
+                .statusLine("Quantity 1 must be greater than 2");
     }
 }

@@ -1,4 +1,4 @@
-package ch.ifocusit.order.port;
+package ch.ifocusit.order.domain.port;
 
 import io.smallrye.mutiny.Uni;
 

@@ -1,7 +1,7 @@
 package ch.ifocusit.order.infra.port.productstore;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-import ch.ifocusit.order.port.ProductStore;
+import ch.ifocusit.order.domain.port.ProductStore;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

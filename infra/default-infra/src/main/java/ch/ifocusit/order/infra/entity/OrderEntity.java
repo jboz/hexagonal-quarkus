@@ -2,8 +2,8 @@ package ch.ifocusit.order.infra.entity;
 
 import java.util.Optional;
 import org.bson.types.ObjectId;
-import ch.ifocusit.order.model.Order;
-import ch.ifocusit.order.model.OrderStatus;
+import ch.ifocusit.order.domain.model.Order;
+import ch.ifocusit.order.domain.model.OrderStatus;
 import io.quarkus.mongodb.panache.common.MongoEntity;
 import io.quarkus.mongodb.panache.reactive.ReactivePanacheMongoEntity;
 import lombok.Setter;

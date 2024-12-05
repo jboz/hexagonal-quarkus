@@ -1,4 +1,4 @@
-package ch.ifocusit.order.service;
+package ch.ifocusit.order.domain.service;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
@@ -10,11 +10,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ch.ifocusit.order.model.Order;
-import ch.ifocusit.order.model.OrderStatus;
-import ch.ifocusit.order.model.events.NewOrderEvent;
-import ch.ifocusit.order.port.OrderRepository;
-import ch.ifocusit.order.port.ProductStore;
+import ch.ifocusit.order.domain.model.Order;
+import ch.ifocusit.order.domain.model.OrderStatus;
+import ch.ifocusit.order.domain.model.events.NewOrderEvent;
+import ch.ifocusit.order.domain.port.OrderRepository;
+import ch.ifocusit.order.domain.port.ProductStore;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import io.smallrye.mutiny.helpers.test.AssertSubscriber;

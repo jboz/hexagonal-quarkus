@@ -1,6 +1,6 @@
-package ch.ifocusit.order.port;
+package ch.ifocusit.order.domain.port;
 
-import ch.ifocusit.order.model.Order;
+import ch.ifocusit.order.domain.model.Order;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 

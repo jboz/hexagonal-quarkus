@@ -1,9 +1,9 @@
 package ch.ifocusit.order.infra.port;
 
 import org.bson.types.ObjectId;
+import ch.ifocusit.order.domain.model.Order;
+import ch.ifocusit.order.domain.port.OrderRepository;
 import ch.ifocusit.order.infra.entity.OrderEntity;
-import ch.ifocusit.order.model.Order;
-import ch.ifocusit.order.port.OrderRepository;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;

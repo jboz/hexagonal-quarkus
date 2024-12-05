@@ -1,8 +1,8 @@
 package ch.ifocusit.order.infra.config;
 
-import ch.ifocusit.order.port.OrderRepository;
-import ch.ifocusit.order.port.ProductStore;
-import ch.ifocusit.order.service.OrderService;
+import ch.ifocusit.order.domain.port.OrderRepository;
+import ch.ifocusit.order.domain.port.ProductStore;
+import ch.ifocusit.order.domain.service.OrderService;
 import jakarta.enterprise.inject.Produces;
 
 public class DomainBeansProvider {

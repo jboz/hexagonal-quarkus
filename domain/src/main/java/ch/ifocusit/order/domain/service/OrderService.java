@@ -1,9 +1,9 @@
-package ch.ifocusit.order.service;
+package ch.ifocusit.order.domain.service;
 
-import ch.ifocusit.order.model.Order;
-import ch.ifocusit.order.model.events.NewOrderEvent;
-import ch.ifocusit.order.port.OrderRepository;
-import ch.ifocusit.order.port.ProductStore;
+import ch.ifocusit.order.domain.model.Order;
+import ch.ifocusit.order.domain.model.events.NewOrderEvent;
+import ch.ifocusit.order.domain.port.OrderRepository;
+import ch.ifocusit.order.domain.port.ProductStore;
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
-package ch.ifocusit.order.model;
+package ch.ifocusit.order.domain.model;
 
-import ch.ifocusit.order.model.exception.QuantityException;
+import ch.ifocusit.order.domain.model.exception.QuantityException;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;

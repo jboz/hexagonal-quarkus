@@ -1,4 +1,4 @@
-package ch.ifocusit.order.model.events;
+package ch.ifocusit.order.domain.model.events;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

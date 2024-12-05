@@ -1,4 +1,4 @@
-package ch.ifocusit.order.model.exception;
+package ch.ifocusit.order.domain.model.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
